@@ -29,25 +29,21 @@ func NewNativeLogger(nativeLog NativeLogger, trace int) Logger {
 }
 
 func (n nativeLogger) Debug(msg string) {
-	if n.trace&DEBUG != 0 {
-		n.logger.Output(3, fmt.Sprintf("DEBUG: %s\n", msg))
-	}
+	n.logger.Output(3, fmt.Sprintf("DEBUG: %s\n", msg))
 }
 
 func (n nativeLogger) Info(msg string) {
-	if n.trace&INFO != 0 {
-		n.logger.Output(3, fmt.Sprintf("INFO: %s\n", msg))
-	}
+	n.logger.Output(3, fmt.Sprintf("INFO: %s\n", msg))
 }
 
 func (n nativeLogger) Warn(err error) {
-	if n.trace&WARNING != 0 {
-		n.logger.Output(3, fmt.Sprintf("WARNING: %v\n", err))
-	}
+	n.logger.Output(3, fmt.Sprintf("WARNING: %v\n", err))
 }
 
 func (n nativeLogger) Error(err error) {
-	if n.trace&ERROR != 0 {
-		n.logger.Output(3, fmt.Sprintf("ERROR: %v\n", err))
-	}
+	n.logger.Output(3, fmt.Sprintf("ERROR: %v\n", err))
+}
+
+func (n nativeLogger) GetTrace() int {
+	return n.trace
 }
